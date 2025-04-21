@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#gameArea {
+    width: 800px;
+    height: 400px;
+    background-color: #87CEEB;
+    position: relative;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+#player {
+    width: 50px;
+    height: 50px;
+    background-image: url('builderman.png'); /* You can replace with your custom Builderman image */
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+}
+
+#1x1x1x1 {
+    width: 50px;
+    height: 50px;
+    background-image: url('1x1x1x1.png'); /* Custom 1x1x1x1 image */
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#gameInfo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
