@@ -6,7 +6,7 @@ let score = 0;
 let playerX = 100;
 let playerY = 350; // Starting position of Builderman
 let enemyX = 750; // Starting position of 1x1x1x1
-let enemyY = 0;
+let enemyY = 0; // Enemy stays at the top, adjust this as needed
 
 // Player Movement
 let moveLeft = false;
@@ -32,9 +32,9 @@ document.addEventListener('keyup', (e) => {
 function gameLoop() {
     // Player Movement
     if (moveLeft && playerX > 0) playerX -= 5;
-    if (moveRight && playerX < 750) playerX += 5;
+    if (moveRight && playerX < window.innerWidth - 50) playerX += 5;  // Adjust for window width
     if (moveUp && playerY > 0) playerY -= 5;
-    if (moveDown && playerY < 350) playerY += 5;
+    if (moveDown && playerY < window.innerHeight - 50) playerY += 5;  // Adjust for window height
 
     // Update Player Position
     player.style.left = playerX + 'px';
@@ -43,9 +43,9 @@ function gameLoop() {
     // Enemy Movement
     enemyX -= 2;
     if (enemyX < -50) {
-        enemyX = 750; // Reset enemy position
+        enemyX = window.innerWidth; // Reset enemy position (use window width)
         score += 10;
-        scoreElement.textContent = score;
+        scoreElement.textContent = `Score: ${score}`;
     }
     enemy.style.left = enemyX + 'px';
     enemy.style.top = enemyY + 'px';
@@ -54,10 +54,10 @@ function gameLoop() {
     if (playerX < enemyX + 50 && playerX + 50 > enemyX && playerY < enemyY + 50 && playerY + 50 > enemyY) {
         alert("Game Over! You were destroyed by 1x1x1x1!");
         score = 0;
-        scoreElement.textContent = score;
+        scoreElement.textContent = `Score: ${score}`;
         playerX = 100;
         playerY = 350;
-        enemyX = 750;
+        enemyX = window.innerWidth;
     }
 
     // Request next frame
