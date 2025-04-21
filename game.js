@@ -17,15 +17,15 @@ let moveDown = false;
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') moveLeft = true;
     if (e.key === 'ArrowRight') moveRight = true;
-    if (e.key === 'ArrowUp') moveUp = true;
-    if (e.key === 'ArrowDown') moveDown = true;
+    if (e.key === 'ArrowUp') moveDown = true; // Swap ArrowUp with ArrowDown
+    if (e.key === 'ArrowDown') moveUp = true;  // Swap ArrowDown with ArrowUp
 });
 
 document.addEventListener('keyup', (e) => {
     if (e.key === 'ArrowLeft') moveLeft = false;
     if (e.key === 'ArrowRight') moveRight = false;
-    if (e.key === 'ArrowUp') moveUp = false;
-    if (e.key === 'ArrowDown') moveDown = false;
+    if (e.key === 'ArrowUp') moveDown = false; // Swap ArrowUp with ArrowDown
+    if (e.key === 'ArrowDown') moveUp = false;  // Swap ArrowDown with ArrowUp
 });
 
 // Game Loop
@@ -33,8 +33,8 @@ function gameLoop() {
     // Player Movement
     if (moveLeft && playerX > 0) playerX -= 5;
     if (moveRight && playerX < window.innerWidth - 50) playerX += 5;  // Adjust for window width
-    if (moveUp && playerY > 0) playerY -= 5;
-    if (moveDown && playerY < window.innerHeight - 50) playerY += 5;  // Adjust for window height
+    if (moveUp && playerY > 0) playerY -= 5;  // Now moves up when pressing ArrowDown
+    if (moveDown && playerY < window.innerHeight - 50) playerY += 5;  // Now moves down when pressing ArrowUp
 
     // Update Player Position
     player.style.left = playerX + 'px';
